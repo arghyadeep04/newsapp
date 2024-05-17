@@ -34,10 +34,11 @@ import NavigateTopButton from './navigateTopButton';
     document.title=catagory
     // console.log(props.apikey)
 
-    setnews(country,catagory,apikey,pageSize).then(articles=>{
+    setnews(country,catagory,apikey,pageSize).then((articles)=>{
         setloading()
         setNews(articles)
-        setnewsShowing(articles.slice(0,10))
+        console.log("ARTIC",articles)
+        setnewsShowing((articles||[]).slice(0,10))
         console.log("NEWSNOW",newsShowing)
     })
     // fetch(`https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.catagory}&pageSize=100&apiKey=${props.apikey}`)
@@ -105,9 +106,9 @@ import NavigateTopButton from './navigateTopButton';
       
         
             <InfiniteScroll
-          dataLength={newsShowing.length||0}
+          dataLength={(newsShowing||"").length}
           next={fetchMoreData}
-          hasMore={count<=Math.floor((newsNow.length)/pageSize)-1}
+          hasMore={count<=Math.floor(((newsNow||"").length)/pageSize)-1}
           loader={<><div className="spinner-grow text-primary" role="status">
           <span className="visually-hidden">Loading...</span>
         </div>
@@ -129,7 +130,7 @@ import NavigateTopButton from './navigateTopButton';
           .slice(count*pageSize,(count+1)*pageSize) */}
           {newsShowing.map(e=>{
             // console.log(e)
-            return(<div className="p-2"><NewsItemMUI news={e} key={e.url}/></div>)
+            return(<div className="p-2" key={e.url}><NewsItemMUI news={e} /></div>)
         })}
       </div>
         </InfiniteScroll>
