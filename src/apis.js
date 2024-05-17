@@ -1,4 +1,4 @@
-const host=`http://localhost`;
+const host=`https://newsappbackend-667m.onrender.com`;
 export const loginUser=async(form,setuserToken,setVisited,setFav,setLiked,selectAlertMessage,setUserName)=>{
     let respons=await fetch(`${host}/users/login`, {
         method: 'POST',

@@ -1,3 +1,4 @@
+
 import logo from './logo.svg';
 import './App.css';
 import React, { Component, useCallback, useEffect, useState } from 'react'
@@ -14,6 +15,9 @@ import NavBarMUI from './components/navBarMUI';
 import favouritesMUI from './components/favouritesMUI';
 import FavouritesMUI from './components/favouritesMUI';
 import AlertBarMUI from './components/alertBarMUI';
+// if (process.env.NODE_ENV !=="production") {
+//   require('dotenv').config()
+// }
 // import { env } from 'node:process';
 const App = (props)=> {
   const [pageSize,setpageSize]=useState(10)
